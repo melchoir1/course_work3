@@ -19,10 +19,10 @@ def view_posts(pk):
     comments = load_comments(pk)
     return render_template('post.html', post=post, comments=comments)
 
-@app.route("/search/", methods=["POST"])
+@app.route("/search/")
 def search_post():
     """поиск по словам"""
-    posts = search_for_posts(request.form.get("word"))
+    posts = search_for_posts(request.args.get("word"))
     return render_template('search.html', posts=posts)
 
 @app.route("/user/<user_name>/")
